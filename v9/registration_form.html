@@ -505,7 +505,9 @@
         const btn1 = document.getElementById("btn1");
         const btn2 = document.getElementById("btn2");
 
-        setInterval(() => {
+
+
+        const pageChecking12 = setInterval(() => {
           if (currentPage == 2) {
             window.scrollTo({
               top: 0,
@@ -513,10 +515,12 @@
             });
             document.getElementById("page2").style.display = "block";
             document.getElementById("page1").style.display = "none";
+            clearInterval(pageChecking12);
           } else if (currentPage == 3) {
             //Move to the next page
           }
         }, 100);
+        
 
         const forms = document.getElementsByTagName("form");
         for (let i = 0; i < 2; i++) {
