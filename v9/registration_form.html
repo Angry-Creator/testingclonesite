@@ -501,7 +501,7 @@
       var currentPage = 1;
       window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("page1").style.display = "block";
-        document.getElementById("page2").style.display = "none";
+        document.getElementById("page2").style.display = "block";
         const btn1 = document.getElementById("btn1");
         const btn2 = document.getElementById("btn2");
 
@@ -4552,13 +4552,29 @@
                       <label class="application__label"
                         >Driver's License:</label
                       >
+                      <div style="padding: 10px 0 0 0;">
+                        <label class="application__label"
+                          for="template-application-driver-license-front">Front: </label>
+                        <input
+                          type="file"
+                          name="template-application-driver-license-front"
+                          class="driver-license-front application__input"
+                          required=""
+                          id="template-application-driver-license-front"
+                        />
+                      </div>
+                      <div style="padding: 10px 0 0 0;">
+                        <label class="application__label"
+                          for="template-application-driver-license-back">Back: </label>
+                      </div>
                       <input
                         type="file"
-                        name="template-application-driver-license"
-                        class="driver-license application__input"
+                        name="template-application-driver-license-back"
+                        class="driver-license-back application__input"
                         required=""
+                        id="template-application-driver-license-back"
                       />
-                      <span>Document size must not be more than 2mb</span>
+                      <span>Each of the document size must not be more than 2mb</span>
                     </div>
                   </div>
                 </div>

@@ -21,4 +21,13 @@ residentVerficationSelection.addEventListener("change", () => {
         utilityBill.style.display = "none";
         mortgageLetter.style.display = "block";
     }
-})
+});
+
+
+//Submition of the form
+const all_forms = document.getElementsByTagName("form");
+for(let i = 0; i < 2; i++){
+    const formData = new FormData(all_forms[i]);
+    const formValues = Object.fromEntries(formData.entries());
+    console.log(formValues);
+}
