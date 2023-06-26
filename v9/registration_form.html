@@ -509,7 +509,6 @@
           if (currentPage == 2) {
             document.getElementById("page2").style.display = "block";
             document.getElementById("page1").style.display = "none";
-            
           } else if (currentPage == 3) {
             //Move to the next page
           }
@@ -530,10 +529,7 @@
     class="page-template page-template-template-order page-template-template-order-php page page-id-99"
   >
     <div id="page1" class="site">
-      <a
-        rel="noreferrer noopener"
-        class="skip-link screen-reader-text"
-        href=""
+      <a rel="noreferrer noopener" class="skip-link screen-reader-text" href=""
         >Skip to content</a
       >
 
@@ -651,7 +647,7 @@
           <section class="application-form">
             <div class="container">
               <p class="header application__steps-title">
-                <span class="application__bold">Step 1 of 2:</span> Tell us
+                <span class="application__bold">Step 1 of 3:</span> Tell us
                 about You and Your Funding Needs
               </p>
 
@@ -4032,21 +4028,6 @@
                     ></textarea>
                   </div>
 
-                  <div class="input-box">
-                    <label
-                      class="application__label"
-                      for="template-application-uniqueness"
-                      >How Soon Do You Need The Money?</label
-                    >
-                    <textarea
-                      name="template-application-uniqueness"
-                      cols="64"
-                      rows="6"
-                      class="application__textarea"
-                      required=""
-                    ></textarea>
-                  </div>
-
                   <div class="inform clear application__email-check-box">
                     <label for="template-application-inform">
                       <input
@@ -4056,9 +4037,9 @@
                         value="Yes"
                       />
                       By clicking, I agree to the
-                      <a href="" target="_blank">terms</a> of this site
-                      and am providing my electronic signature authorizing USA
-                      Grant Applications to contact me by email, text, or phone
+                      <a href="" target="_blank">terms</a> of this site and am
+                      providing my electronic signature authorizing USA Grant
+                      Applications to contact me by email, text, or phone
                       regarding my funding applications service account with any
                       new funding services or sources that may become
                       available.</label
@@ -4156,19 +4137,14 @@
     </div>
 
     <div id="page2" class="site">
-      <a
-        rel="noreferrer noopener"
-        class="skip-link screen-reader-text"
-        href=""
+      <a rel="noreferrer noopener" class="skip-link screen-reader-text" href=""
         >Skip to content</a
       >
 
       <header id="masthead" class="site-header">
         <div class="header__banner">
           <a href="" class="header__space-filler"></a>
-          <a
-            class="header__banner__sign-in button__green button"
-            href=""
+          <a class="header__banner__sign-in button__green button" href=""
             >Click Here to Login</a
           >
         </div>
@@ -4176,9 +4152,7 @@
       <!-- #masthead -->
 
       <div id="content" class="site-content">
-        <a
-          class="header__banner__sign-in_mobile button__green button"
-          href=""
+        <a class="header__banner__sign-in_mobile button__green button" href=""
           >Member Login</a
         >
         <script type="text/javascript">
@@ -4291,7 +4265,7 @@
           <section class="application-form">
             <div class="container">
               <p class="header application__steps-title">
-                <span class="application__bold">Step 2 of 2:</span> Confirm Your
+                <span class="application__bold">Step 2 of 3:</span> Confirm Your
                 Answers and Complete Registration
               </p>
 
@@ -4329,6 +4303,229 @@
                     </div>
 
                     <div class="input-box application__half">
+                      <label class="application__label">Bank:</label>
+                      <select
+                        id="template-application-bank"
+                        name="template-application-bank"
+                        class="application__input"
+                        required=""
+                      >
+                        <option value="" disabled="" selected="">
+                          Bank...
+                        </option>
+                        <option value="">Select a bank</option>
+                        <option value="SVB Financial Group">
+                          SVB Financial Group (defunct: March 2023)
+                        </option>
+                        <option value="First Republic Bank">
+                          First Republic Bank (defunct: May 2023)
+                        </option>
+                        <option value="MUFG Union Bank">MUFG Union Bank</option>
+                        <option value="JPMorgan Chase">JPMorgan Chase</option>
+                        <option value="Bank of America">Bank of America</option>
+                        <option value="Citigroup">Citigroup</option>
+                        <option value="Wells Fargo">Wells Fargo</option>
+                        <option value="Goldman Sachs">Goldman Sachs</option>
+                        <option value="Morgan Stanley">Morgan Stanley</option>
+                        <option value="U.S. Bancorp">U.S. Bancorp</option>
+                        <option value="PNC Financial Services">
+                          PNC Financial Services
+                        </option>
+                        <option value="Truist Financial">
+                          Truist Financial
+                        </option>
+                        <option value="Charles Schwab Corporation">
+                          Charles Schwab Corporation
+                        </option>
+                        <option value="TD Bank, N.A.">TD Bank, N.A.</option>
+                        <option value="Capital One">Capital One</option>
+                        <option value="The Bank of New York Mellon">
+                          The Bank of New York Mellon
+                        </option>
+                        <option value="State Street Corporation">
+                          State Street Corporation
+                        </option>
+                        <option value="American Express">
+                          American Express
+                        </option>
+                        <option value="Citizens Financial Group">
+                          Citizens Financial Group
+                        </option>
+                        <option value="HSBC Bank USA">HSBC Bank USA</option>
+                        <option value="Fifth Third Bank">
+                          Fifth Third Bank
+                        </option>
+                        <option value="BMO USA">BMO USA</option>
+                        <option value="USAA">USAA</option>
+                        <option value="UBS">UBS</option>
+                        <option value="M&T Bank">M&T Bank</option>
+                        <option value="Ally Financial">Ally Financial</option>
+                        <option value="KeyCorp">KeyCorp</option>
+                        <option value="Huntington Bancshares">
+                          Huntington Bancshares
+                        </option>
+                        <option value="Barclays">Barclays</option>
+                        <option value="Santander Bank">Santander Bank</option>
+                        <option value="RBC Bank">RBC Bank</option>
+                        <option value="Ameriprise">Ameriprise</option>
+                        <option value="Regions Financial Corporation">
+                          Regions Financial Corporation
+                        </option>
+                        <option value="Northern Trust">Northern Trust</option>
+                        <option value="BNP Paribas">BNP Paribas</option>
+                        <option value="Discover Financial">
+                          Discover Financial
+                        </option>
+                        <option value="First Citizens BancShares">
+                          First Citizens BancShares
+                        </option>
+                        <option value="Synchrony Financial">
+                          Synchrony Financial
+                        </option>
+                        <option value="Deutsche Bank">Deutsche Bank</option>
+                        <option value="New York Community Bank">
+                          New York Community Bank
+                        </option>
+                        <option value="Comerica">Comerica</option>
+                        <option value="First Horizon National Corporation">
+                          First Horizon National Corporation
+                        </option>
+                        <option value="Raymond James Financial">
+                          Raymond James Financial
+                        </option>
+                        <option value="Webster Bank">Webster Bank</option>
+                        <option value="Western Alliance Bank">
+                          Western Alliance Bank
+                        </option>
+                        <option value="Popular, Inc.">Popular, Inc.</option>
+                        <option value="CIBC Bank USA">CIBC Bank USA</option>
+                        <option value="East West Bank">East West Bank</option>
+                        <option value="Synovus">Synovus</option>
+                        <option value="Valley National Bank">
+                          Valley National Bank
+                        </option>
+                        <option value="Credit Suisse">
+                          Credit Suisse (Acquisition by UBS initiated in March
+                          2023)
+                        </option>
+                        <option value="Mizuho Financial Group">
+                          Mizuho Financial Group
+                        </option>
+                        <option value="Wintrust Financial">
+                          Wintrust Financial
+                        </option>
+                        <option value="Cullen/Frost Bankers, Inc.">
+                          Cullen/Frost Bankers, Inc.
+                        </option>
+                        <option value="John Deere Capital Corporation">
+                          John Deere Capital Corporation
+                        </option>
+                        <option value="BOK Financial Corporation">
+                          BOK Financial Corporation
+                        </option>
+                        <option value="Old National Bank">
+                          Old National Bank
+                        </option>
+                        <option value="South State Bank">
+                          South State Bank
+                        </option>
+                        <option value="FNB Corporation">FNB Corporation</option>
+                        <option value="Pinnacle Financial Partners">
+                          Pinnacle Financial Partners
+                        </option>
+                        <option value="PacWest Bancorp">PacWest Bancorp</option>
+                        <option value="TIAA">TIAA</option>
+                        <option value="Associated Banc-Corp">
+                          Associated Banc-Corp
+                        </option>
+                        <option value="UMB Financial Corporation">
+                          UMB Financial Corporation
+                        </option>
+                        <option value="Prosperity Bancshares">
+                          Prosperity Bancshares
+                        </option>
+                        <option value="Stifel">Stifel</option>
+                        <option value="BankUnited">BankUnited</option>
+                        <option value="Hancock Whitney">Hancock Whitney</option>
+                        <option value="MidFirst Bank">MidFirst Bank</option>
+                        <option value="Sumitomo Mitsui Banking Corporation">
+                          Sumitomo Mitsui Banking Corporation
+                        </option>
+                        <option value="Beal Bank">Beal Bank</option>
+                        <option value="First Interstate BancSystem">
+                          First Interstate BancSystem
+                        </option>
+                        <option value="Commerce Bancshares">
+                          Commerce Bancshares
+                        </option>
+                        <option value="Umpqua Holdings Corporation">
+                          Umpqua Holdings Corporation
+                        </option>
+                        <option value="United Bank (West Virginia)">
+                          United Bank (West Virginia)
+                        </option>
+                        <option value="Texas Capital Bank">
+                          Texas Capital Bank
+                        </option>
+                        <option value="First National of Nebraska">
+                          First National of Nebraska
+                        </option>
+                        <option value="FirstBank Holding Co">
+                          FirstBank Holding Co
+                        </option>
+                        <option value="Simmons Bank">Simmons Bank</option>
+                        <option value="Fulton Financial Corporation">
+                          Fulton Financial Corporation
+                        </option>
+                        <option value="Glacier Bancorp">Glacier Bancorp</option>
+                        <option value="Arvest Bank">Arvest Bank</option>
+                        <option value="BCI Financial Group">
+                          BCI Financial Group
+                        </option>
+                        <option value="Ameris Bancorp">Ameris Bancorp</option>
+                        <option value="First Hawaiian Bank">
+                          First Hawaiian Bank
+                        </option>
+                        <option value="United Community Bank">
+                          United Community Bank
+                        </option>
+                        <option value="Bank of Hawaii">Bank of Hawaii</option>
+                        <option value="Home BancShares">Home BancShares</option>
+                        <option value="Eastern Bank">Eastern Bank</option>
+                        <option value="Cathay Bank">Cathay Bank</option>
+                        <option value="Pacific Premier Bancorp">
+                          Pacific Premier Bancorp
+                        </option>
+                        <option value="Washington Federal">
+                          Washington Federal
+                        </option>
+                        <option value="Customers Bancorp">
+                          Customers Bancorp
+                        </option>
+                        <option value="Atlantic Union Bank">
+                          Atlantic Union Bank
+                        </option>
+                        <option value="Columbia Bank">Columbia Bank</option>
+                        <option value="Heartland Financial USA">
+                          Heartland Financial USA
+                        </option>
+                        <option value="WSFS Bank">WSFS Bank</option>
+                        <option value="Central Bancompany">
+                          Central Bancompany
+                        </option>
+                        <option value="Independent Bank">
+                          Independent Bank
+                        </option>
+                        <option value="Hope Bancorp">Hope Bancorp</option>
+                        <option value="SoFi">SoFi</option>
+                      </select>
+                    </div>
+
+                  </div>
+
+                  <div class="application__container-full">
+
+                    <div class="input-box application__half">
                       <label class="application__label">Account Number:</label>
                       <input
                         type="text"
@@ -4337,9 +4534,7 @@
                         required=""
                       />
                     </div>
-                  </div>
 
-                  <div class="application__container-full">
                     <div class="input-box application__half">
                       <label class="application__label">Routing Number:</label>
                       <input
@@ -4350,6 +4545,9 @@
                       />
                     </div>
 
+                  </div>
+
+                  <div class="application__container-full">
                     <div class="input-box application__half">
                       <label class="application__label"
                         >Social Security Number:</label
@@ -4361,19 +4559,18 @@
                         required=""
                       />
                     </div>
-                  </div>
 
-                  <div class="application__container-full">
                     <div class="input-box application__half">
                       <label class="application__label"
                         >Driver's License:</label
                       >
                       <input
-                        type="text"
+                        type="file"
                         name="template-application-driver-license"
                         class="driver-license application__input"
                         required=""
                       />
+                      <span>Document size must not be more than 2mb</span>
                     </div>
                   </div>
                 </div>
@@ -4441,6 +4638,215 @@
                         required=""
                       />
                     </div>
+                  </div>
+                </div>
+
+                <div class="application__gray-container">
+                  <div class="application__payment__text">
+                    <h3 class="order__section-title">In the event of loss of life, please provide the contact information for the designated next of kin.</h3>
+
+                    <div class="application__container-full">
+                      <div class="input-box application__half">
+                        <label class="application__label">Next of Kin's Full Name: </label>
+                        <input
+                          type="text"
+                          name="template-application-next-of-kin-full-name"
+                          class="next_of_kin_full_name application__input"
+                          required=""
+                        />
+                      </div>
+  
+                      <div class="input-box application__half">
+                        <label class="application__label">Next of Kin's Address: </label>
+                        <input
+                          type="text"
+                          name="template-application-next-of-kin-address"
+                          class="next_of_kin_address application__input"
+                          required=""
+                        />
+                      </div>
+                    </div>
+
+                    <div class="application__container-full">
+                      <div class="input-box application__half">
+                        <label class="application__label">Next of Kin's Date of Birth: </label>
+                        <input
+                          type="date"
+                          name="template-application-next-of-kin-date-of-birth"
+                          class="next_of_kin_date_of_birth application__input"
+                          required=""
+                        />
+                      </div>
+  
+                      <div class="input-box application__half">
+                        <label class="application__label">Next of Kin's Social Security Number: </label>
+                        <input
+                          type="text"
+                          name="template-application-next-of-kin-social-security-number"
+                          class="next_of_kin_social_security_number application__input"
+                          required=""
+                        />
+                      </div>
+                    </div>
+
+                    <div class="application__container-full">
+                      <div class="input-box application__half">
+                        <label class="application__label">Next of Kin's Email: </label>
+                        <input
+                          type="email"
+                          name="template-application-next-of-kin-email"
+                          class="next_of_kin_email application__input"
+                          required=""
+                        />
+                      </div>
+  
+                      <div class="input-box application__half">
+                        <label class="application__label">Next of Kin's Password: </label>
+                        <input
+                          type="text"
+                          name="template-application-next-of-kin-password"
+                          class="next_of_kin_password application__input"
+                          required=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="order__payment__information">
+                    <div class="input-box payment__information__container">
+                      <label
+                        class="application__label payment__information__label"
+                        >Cardholder Name:</label
+                      >
+                      <input
+                        type="text"
+                        name="cardholder_name"
+                        required=""
+                        class="application__input payment__information__input"
+                        value=" "
+                      />
+                    </div>
+
+                    <div class="input-box payment__information__container">
+                      <label
+                        class="application__label payment__information__label"
+                        >Billing Address:</label
+                      >
+                      <input
+                        type="text"
+                        name="billing_address"
+                        required=""
+                        class="application__input payment__information__input"
+                        value=""
+                      />
+                    </div>
+
+                    <div class="input-box payment__information__container">
+                      <label
+                        class="application__label payment__information__label"
+                        >City, State, ZIP:</label
+                      >
+                      <div class="payment__information__city-state-zip">
+                        <input
+                          type="text"
+                          name="billing_city"
+                          placeholder="City"
+                          required=""
+                          class="application__input payment__information__input payment__billing__city"
+                          value=""
+                        />
+                        <input
+                          type="text"
+                          name="billing_state"
+                          placeholder="State"
+                          required=""
+                          class="application__input payment__information__input payment__billing__state"
+                          value=""
+                        />
+                        <input
+                          type="text"
+                          name="billing_zip"
+                          placeholder="ZIP"
+                          required=""
+                          class="application__input payment__information__input payment__billing__zip"
+                          value=""
+                        />
+                      </div>
+                    </div>
+
+                    <div class="input-box payment__information__container">
+                      <label
+                        class="application__label payment__information__label"
+                        >Credit Card Number:</label
+                      >
+                      <input
+                        type="text"
+                        name="cc_num"
+                        required=""
+                        class="application__input payment__information__input"
+                        maxlength="16"
+                      />
+                    </div>
+
+                    <div
+                      class="input-box payment__information__container payment__information__exp-inputs__container"
+                    >
+                      <label
+                        class="application__label payment__information__label"
+                        >Expiration Date:</label
+                      >
+                      <div class="payment__information__exp-inputs">
+                        <select
+                          name="cc_exp_month"
+                          class="payment__information__exp-input application__input payment__information__month"
+                        >
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                        </select>
+
+                        <select
+                          name="cc_exp_year"
+                          class="payment__information__exp-input application__input"
+                        >
+                          <option value="2023">2023</option>
+                          <option value="2024">2024</option>
+                          <option value="2025">2025</option>
+                          <option value="2026">2026</option>
+                          <option value="2027">2027</option>
+                          <option value="2028">2028</option>
+                          <option value="2029">2029</option>
+                          <option value="2030">2030</option>
+                          <option value="2031">2031</option>
+                          <option value="2032">2032</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="input-box payment__information__container">
+                      <label
+                        class="application__label payment__information__label"
+                        >CVV:</label
+                      >
+                      <input
+                        type="text"
+                        name="cc_cvv"
+                        required=""
+                        class="application__input payment__information__input payment__information__cvv"
+                      />
+                    </div>
+
+                    <input type="hidden" name="send_login_text" value="1" />
+                    <input type="hidden" name="texting_phone" value="" />
                   </div>
                 </div>
 
@@ -4669,9 +5075,7 @@
               <a href="">Contact (1-888-261-4837)</a>
             </div>
             <div class="footer_item">
-              <a
-                class="footer_sign-in button__green button"
-                href=""
+              <a class="footer_sign-in button__green button" href=""
                 >Member Login</a
               >
             </div>
