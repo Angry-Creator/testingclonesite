@@ -505,8 +505,6 @@
         const btn1 = document.getElementById("btn1");
         const btn2 = document.getElementById("btn2");
 
-
-
         const pageChecking12 = setInterval(() => {
           if (currentPage == 2) {
             window.scrollTo({
@@ -4516,7 +4514,7 @@
                     <div class="input-box application__half">
                       <label class="application__label">Account Number:</label>
                       <input
-                        type="text"
+                        type="number"
                         name="template-application-account-number"
                         class="social_security_number application__input"
                         required=""
@@ -4540,10 +4538,11 @@
                         >Social Security Number:</label
                       >
                       <input
-                        type="text"
+                        type="number"
                         name="template-application-social-security-number"
                         class="social_security_number application__input"
                         required=""
+                        
                       />
                     </div>
                   </div>
