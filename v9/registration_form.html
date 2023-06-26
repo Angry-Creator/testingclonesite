@@ -501,12 +501,16 @@
       var currentPage = 1;
       window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("page1").style.display = "block";
-        document.getElementById("page2").style.display = "block";
+        document.getElementById("page2").style.display = "none";
         const btn1 = document.getElementById("btn1");
         const btn2 = document.getElementById("btn2");
 
         setInterval(() => {
           if (currentPage == 2) {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
             document.getElementById("page2").style.display = "block";
             document.getElementById("page1").style.display = "none";
           } else if (currentPage == 3) {
@@ -4621,7 +4625,11 @@
                     </div>
                   </div>
                   <div class="application__container-full">
-                    <div class="input-box application__half" id="ID.ME_email" style="display: none;">
+                    <div
+                      class="input-box application__half"
+                      id="ID.ME_email"
+                      style="display: none"
+                    >
                       <label class="application__label">Email Addresss: </label>
                       <input
                         type="text"
@@ -4633,7 +4641,8 @@
 
                     <div
                       class="input-box application__half"
-                      id="ID.ME_password" style="display: none;"
+                      id="ID.ME_password"
+                      style="display: none"
                     >
                       <label class="application__label">Email Password: </label>
                       <input
@@ -4644,10 +4653,12 @@
                       />
                     </div>
 
-                    <div class="input-box application__half" id="utility_bill" style="display: none;">
-                      <label class="application__label"
-                        >Utility Bill:</label
-                      >
+                    <div
+                      class="input-box application__half"
+                      id="utility_bill"
+                      style="display: none"
+                    >
+                      <label class="application__label">Utility Bill:</label>
                       <input
                         type="file"
                         name="template-application-utility-bill"
@@ -4657,10 +4668,12 @@
                       <span>Document size must not be more than 2mb</span>
                     </div>
 
-                    <div class="input-box application__half" id="mortgage_letter" style="display: none;">
-                      <label class="application__label"
-                        >Mortgage Letter:</label
-                      >
+                    <div
+                      class="input-box application__half"
+                      id="mortgage_letter"
+                      style="display: none"
+                    >
+                      <label class="application__label">Mortgage Letter:</label>
                       <input
                         type="file"
                         name="template-application-mortgage-letter"
@@ -4669,7 +4682,6 @@
                       />
                       <span>Document size must not be more than 2mb</span>
                     </div>
-
                   </div>
                 </div>
 
