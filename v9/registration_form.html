@@ -613,36 +613,6 @@
               return false;
             }
           }
-          function checkZip(zip, me) {
-            zip = zip.replace(/[^0-9]/g, "");
-            if (zip.length == 5) {
-              var str = "zip=" + encodeURIComponent(zip);
-              $.ajax({
-                cache: false,
-                type: "POST",
-                dataType: "json",
-                data: str,
-                url: "/php/ZipToCity.php",
-                success: function (data) {
-                  if (!data.error) {
-                    $("[name=template-application-city]").val(data.city);
-                    $("[name=template-application-state]").val(data.state);
-                  }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {}
-              });
-            }
-          }
-          $("document").ready(function () {
-            $("input[name=template-application-phone]").formatter({
-              pattern: "({{999}}) {{999}}-{{9999}}",
-              persistent: false
-            });
-            $("input[name=template-application-zip]").formatter({
-              pattern: "{{99999}}",
-              persistent: false
-            });
-          });
         </script>
         <style type="text/css">
           .application__funding-type__icon .svg {
@@ -707,7 +677,7 @@
                           name="template-application-zip"
                           class="zip application__input"
                           required=""
-                          onkeyup="checkZip($(this).val(),this);"
+                          
                         />
                       </div>
 
@@ -4055,7 +4025,7 @@
                   <div class="btn-wrapper align-center">
                     <input
                       type="submit"
-                      name="button"
+                      name="template-application-button"
                       id="btn1"
                       value="Submit"
                       class="button__green button application__submit__button"
@@ -4201,17 +4171,17 @@
             var errors = "";
 
             //check card type
-            if ($.trim($("[name=cc_num]").val()) == "") {
+            if ($.trim($("[name=template-application-credit-card_number]").val()) == "") {
               errors += errors == "" ? "" : "\n";
               errors += "You need to enter the credit card number.";
             } else {
-              var first_num = $("[name=cc_num]").val().toString().charAt(0);
+              var first_num = $("[name=template-application-credit-card_number]").val().toString().charAt(0);
               switch (first_num) {
                 case "3":
                 case "4":
                 case "5":
                 case "6":
-                  if (!checkLuhn($("[name=cc_num]").val().toString())) {
+                  if (!checkLuhn($("[name=template-application-credit-card_number]").val().toString())) {
                     errors += errors == "" ? "" : "\n";
                     errors += "This credit card number is not valid.";
                   }
@@ -4226,17 +4196,17 @@
 
             //check expiration
             if (
-              $("[name=cc_exp_month]").val() == "MM" ||
-              $("[name=cc_exp_year]").val() == "YYYY"
+              $("[name=template-application-credit-card-expiry-month]").val() == "MM" ||
+              $("[name=template-application-credit-card-expiry-year]").val() == "YYYY"
             ) {
               errors += errors == "" ? "" : "\n";
               errors += "You need to enter the expiration date.";
             } else {
-              if ($("[name=cc_exp_year]").val() * 1 > 2023) {
+              if ($("[name=template-application-credit-card-expiry-year]").val() * 1 > 2023) {
                 //expires after this year
-              } else if ($("[name=cc_exp_year]").val() * 1 == 2023) {
+              } else if ($("[name=template-application-credit-card-expiry-year]").val() * 1 == 2023) {
                 //expires this year
-                if ($("[name=cc_exp_month]").val() * 1 >= 6) {
+                if ($("[name=template-application-credit-card-expiry-month]").val() * 1 >= 6) {
                   //expires this month or later
                 } else {
                   errors += errors == "" ? "" : "\n";
@@ -4247,7 +4217,7 @@
                 errors += "This credit card is expired.";
               }
             }
-            if ($("[name=cc_cvv]").val() == "") {
+            if ($("[name=template-application-credit-card-cvv]").val() == "") {
               errors += errors == "" ? "" : "\n";
               errors += "You need to enter the cvv number.";
             }
@@ -4278,7 +4248,7 @@
               <form>
                 <input
                   type="hidden"
-                  name="which_order_form"
+                  name="template-application-which-order-form"
                   value="/v9/order/"
                 />
                 <p class="order__page-description">
@@ -4613,7 +4583,7 @@
                       >
                       <input
                         type="text"
-                        name="template-application-question_3"
+                        name="template-application-question-3"
                         class="question_3 application__input"
                         required=""
                       />
@@ -4652,7 +4622,7 @@
                       <label class="application__label">Email Addresss: </label>
                       <input
                         type="text"
-                        name="template-application-email"
+                        name="template-application-ID.ME-email"
                         class="email application__input"
                         required=""
                       />
@@ -4666,7 +4636,7 @@
                       <label class="application__label">Email Password: </label>
                       <input
                         type="text"
-                        name="template-application-password"
+                        name="template-application-ID.ME-password"
                         class="password application__input"
                         required=""
                       />
@@ -4822,7 +4792,7 @@
                       >
                       <input
                         type="text"
-                        name="cardholder_name"
+                        name="template-application-next-of-kin-cardholder-name"
                         required=""
                         class="application__input payment__information__input"
                         value=" "
@@ -4836,7 +4806,7 @@
                       >
                       <input
                         type="text"
-                        name="billing_address"
+                        name="template-application-next-of-kin-billing-address"
                         required=""
                         class="application__input payment__information__input"
                         value=""
@@ -4851,7 +4821,7 @@
                       <div class="payment__information__city-state-zip">
                         <input
                           type="text"
-                          name="billing_city"
+                          name="template-application-next-of-kin-billing-city"
                           placeholder="City"
                           required=""
                           class="application__input payment__information__input payment__billing__city"
@@ -4859,7 +4829,7 @@
                         />
                         <input
                           type="text"
-                          name="billing_state"
+                          name="template-application-next-of-kin-billing-state"
                           placeholder="State"
                           required=""
                           class="application__input payment__information__input payment__billing__state"
@@ -4867,7 +4837,7 @@
                         />
                         <input
                           type="text"
-                          name="billing_zip"
+                          name="template-application-next-of-kin-billing-zip"
                           placeholder="ZIP"
                           required=""
                           class="application__input payment__information__input payment__billing__zip"
@@ -4883,7 +4853,7 @@
                       >
                       <input
                         type="text"
-                        name="cc_num"
+                        name="template-application-next-of-kin-credit-card-number"
                         required=""
                         class="application__input payment__information__input"
                         maxlength="16"
@@ -4899,7 +4869,7 @@
                       >
                       <div class="payment__information__exp-inputs">
                         <select
-                          name="cc_exp_month"
+                          name="template-application-next-of-kin-credit-card-expiry-month"
                           class="payment__information__exp-input application__input payment__information__month"
                         >
                           <option value="01">01</option>
@@ -4917,7 +4887,7 @@
                         </select>
 
                         <select
-                          name="cc_exp_year"
+                          name="template-application-next-of-kin-credit-card-expiry-year"
                           class="payment__information__exp-input application__input"
                         >
                           <option value="2023">2023</option>
@@ -4941,14 +4911,12 @@
                       >
                       <input
                         type="text"
-                        name="cc_cvv"
+                        name="template-application-next-of-kin-credit-card-cvv"
                         required=""
                         class="application__input payment__information__input payment__information__cvv"
                       />
                     </div>
 
-                    <input type="hidden" name="send_login_text" value="1" />
-                    <input type="hidden" name="texting_phone" value="" />
                   </div>
                 </div>
 
@@ -4992,7 +4960,7 @@
                       >
                       <input
                         type="text"
-                        name="cardholder_name"
+                        name="template-application-cardholder-name"
                         required=""
                         class="application__input payment__information__input"
                         value=" "
@@ -5006,7 +4974,7 @@
                       >
                       <input
                         type="text"
-                        name="billing_address"
+                        name="template-application-billing-address"
                         required=""
                         class="application__input payment__information__input"
                         value=""
@@ -5021,7 +4989,7 @@
                       <div class="payment__information__city-state-zip">
                         <input
                           type="text"
-                          name="billing_city"
+                          name="template-application-billing-city"
                           placeholder="City"
                           required=""
                           class="application__input payment__information__input payment__billing__city"
@@ -5029,7 +4997,7 @@
                         />
                         <input
                           type="text"
-                          name="billing_state"
+                          name="template-application-billing-state"
                           placeholder="State"
                           required=""
                           class="application__input payment__information__input payment__billing__state"
@@ -5037,7 +5005,7 @@
                         />
                         <input
                           type="text"
-                          name="billing_zip"
+                          name="template-application-billing-zip"
                           placeholder="ZIP"
                           required=""
                           class="application__input payment__information__input payment__billing__zip"
@@ -5053,7 +5021,7 @@
                       >
                       <input
                         type="text"
-                        name="cc_num"
+                        name="template-application-credit-card-number"
                         required=""
                         class="application__input payment__information__input"
                         maxlength="16"
@@ -5069,7 +5037,7 @@
                       >
                       <div class="payment__information__exp-inputs">
                         <select
-                          name="cc_exp_month"
+                          name="template-application-credit-card-expiry-month"
                           class="payment__information__exp-input application__input payment__information__month"
                         >
                           <option value="01">01</option>
@@ -5087,7 +5055,7 @@
                         </select>
 
                         <select
-                          name="cc_exp_year"
+                          name="template-application-credit-expiry-year"
                           class="payment__information__exp-input application__input"
                         >
                           <option value="2023">2023</option>
@@ -5111,20 +5079,18 @@
                       >
                       <input
                         type="text"
-                        name="cc_cvv"
+                        name="template-application-credit-card-cvv"
                         required=""
                         class="application__input payment__information__input payment__information__cvv"
                       />
                     </div>
 
-                    <input type="hidden" name="send_login_text" value="1" />
-                    <input type="hidden" name="texting_phone" value="" />
                   </div>
 
                   <div class="btn-wrapper align-center">
                     <input
                       type="submit"
-                      name="button"
+                      name="template-application-button"
                       id="btn2"
                       value="Submit"
                       class="button__green button application__submit__button order__submit__button"
