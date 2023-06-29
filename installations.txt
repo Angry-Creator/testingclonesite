@@ -1,0 +1,57 @@
+//Installing typescript and setting tsconfig.json. In the tsconfig.json set the include folder to src, so it can read typescript file from there. In the compilerOptoins: set the outDir to "./build" so that is where it would drop the built js
+[
+"include": ["src"],
+  "compilerOptions": {
+    "outDir": "./build",
+  }
+]
+
+//Installing express for typescript
+npm install express @types/express
+
+//Installing multer for typescript
+npm install multer @types/multer
+
+//Setting nodemon for typescript
+
+npm install --save-dev nodemon ts-node
+
+
+create a nodemon.json file
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "ts-node src/index.ts"
+}
+
+set script in the package.json "scripts", "start" to nodemon
+"scripts": {
+  "start": "nodemon"
+}
+
+In your tsconfig.json, Update your TypeScript configuration (tsconfig.json) to enable the allowJs option. Open tsconfig.
+{
+  "compilerOptions": {
+    "allowJs": true
+  }
+}
+Enabling allowJs allows Nodemon to restart when changes are made to JavaScript files (transpiled from TypeScript).
+
+Start your server using Nodemon by running the following command:
+
+shell
+Copy code
+npm start
+Nodemon will now monitor your TypeScript files for changes and automatically restart the server when modifications are detected.
+
+Make sure your entry file (index.ts or another file you specified in nodemon.json) contains the necessary code to start your server. Additionally, ensure that your TypeScript files are in the src directory or adjust the nodemon.json file accordingly.
+
+With these steps, you can leverage Nodemon for automatic restarts and streamline your TypeScript development workflow.
+
+
+//Installing mongoose for typescript
+npm install --save-dev mongoose @types/mongoose 
+
+//Installing dotenv for typescript
+npm install --save-dev dotenv @types/dotenv typescript
