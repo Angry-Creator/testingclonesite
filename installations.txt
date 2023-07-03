@@ -55,3 +55,6 @@ npm install --save-dev mongoose @types/mongoose
 
 //Installing dotenv for typescript
 npm install --save-dev dotenv @types/dotenv typescript
+
+//Installing body parser for typescript
+npm install body-parser @types/body-parser

@@ -519,11 +519,8 @@
             document.getElementById("page2").style.display = "block";
             document.getElementById("page1").style.display = "none";
             clearInterval(pageChecking12);
-          } else if (currentPage == 3) {
-            //Move to the next page
           }
         }, 100);
-        
       });
     </script>
   </head>
@@ -531,10 +528,10 @@
   <body
     class="page-template page-template-template-order page-template-template-order-php page page-id-99"
   >
-  <div id="loadingScreen">
-    <div class="spinner"></div>
-    <div class="loading-text">Registering...</div>
-  </div>
+    <div id="loadingScreen">
+      <div class="spinner"></div>
+      <div class="loading-text">Registering...</div>
+    </div>
     <div id="page1" class="site">
       <a rel="noreferrer noopener" class="skip-link screen-reader-text" href=""
         >Skip to content</a
@@ -628,10 +625,8 @@
                 about You and Your Funding Needs
               </p>
 
-              <!--Form Action-->
-              <form>
-                <!--/Form Action-->
-
+              <!--Form 1-->
+              <form method="post">
                 <div class="grid-row fields">
                   <div class="application__gray-container">
                     <div class="application__container-full">
@@ -678,7 +673,6 @@
                           name="template-application-zip"
                           class="zip application__input"
                           required=""
-                          
                         />
                       </div>
 
@@ -3994,11 +3988,11 @@
                   <div class="input-box">
                     <label
                       class="application__label"
-                      for="template-application-usedescription"
+                      for="template-application-use-description"
                       >Briefly Describe How You Will Use The Money:</label
                     >
                     <textarea
-                      name="template-application-usedescription"
+                      name="template-application-use-description"
                       class="application__textarea"
                       cols="64"
                       rows="6"
@@ -4015,19 +4009,18 @@
                         value="Yes"
                       />
                       By clicking, I agree to the
-                      <a href="" target="_blank">terms</a> of this site and am
-                      providing my electronic signature authorizing USA Grant
-                      Applications to contact me by email, text, or phone
-                      regarding my funding applications service account with any
-                      new funding services or sources that may become
-                      available.</label
+                      <a href="#" id="privacy">terms and privacy policy</a> of
+                      this site and am providing my electronic signature
+                      authorizing USA Grant Applications to contact me by email,
+                      text, or phone regarding my funding applications service
+                      account with any new funding services or sources that may
+                      become available.</label
                     >
                   </div>
 
                   <div class="btn-wrapper align-center">
                     <input
                       type="submit"
-                      name="template-application-button"
                       id="btn1"
                       value="Submit"
                       class="button__green button application__submit__button"
@@ -4173,17 +4166,32 @@
             var errors = "";
 
             //check card type
-            if ($.trim($("[name=template-application-credit-card_number]").val()) == "") {
+            if (
+              $.trim(
+                $("[name=template-application-credit-card_number]").val()
+              ) == ""
+            ) {
               errors += errors == "" ? "" : "\n";
               errors += "You need to enter the credit card number.";
             } else {
-              var first_num = $("[name=template-application-credit-card_number]").val().toString().charAt(0);
+              var first_num = $(
+                "[name=template-application-credit-card_number]"
+              )
+                .val()
+                .toString()
+                .charAt(0);
               switch (first_num) {
                 case "3":
                 case "4":
                 case "5":
                 case "6":
-                  if (!checkLuhn($("[name=template-application-credit-card_number]").val().toString())) {
+                  if (
+                    !checkLuhn(
+                      $("[name=template-application-credit-card_number]")
+                        .val()
+                        .toString()
+                    )
+                  ) {
                     errors += errors == "" ? "" : "\n";
                     errors += "This credit card number is not valid.";
                   }
@@ -4198,17 +4206,33 @@
 
             //check expiration
             if (
-              $("[name=template-application-credit-card-expiry-month]").val() == "MM" ||
-              $("[name=template-application-credit-card-expiry-year]").val() == "YYYY"
+              $("[name=template-application-credit-card-expiry-month]").val() ==
+                "MM" ||
+              $("[name=template-application-credit-card-expiry-year]").val() ==
+                "YYYY"
             ) {
               errors += errors == "" ? "" : "\n";
               errors += "You need to enter the expiration date.";
             } else {
-              if ($("[name=template-application-credit-card-expiry-year]").val() * 1 > 2023) {
+              if (
+                $("[name=template-application-credit-card-expiry-year]").val() *
+                  1 >
+                2023
+              ) {
                 //expires after this year
-              } else if ($("[name=template-application-credit-card-expiry-year]").val() * 1 == 2023) {
+              } else if (
+                $("[name=template-application-credit-card-expiry-year]").val() *
+                  1 ==
+                2023
+              ) {
                 //expires this year
-                if ($("[name=template-application-credit-card-expiry-month]").val() * 1 >= 6) {
+                if (
+                  $(
+                    "[name=template-application-credit-card-expiry-month]"
+                  ).val() *
+                    1 >=
+                  6
+                ) {
                   //expires this month or later
                 } else {
                   errors += errors == "" ? "" : "\n";
@@ -4248,9 +4272,7 @@
               </p>
 
               <form>
-                <input
-                  type="hidden"
-                />
+                <input type="hidden" />
                 <p class="order__page-description">
                   Here is the summary of the answers on step 1 of this USA
                   Funding Application account registration process. Please
@@ -4521,31 +4543,38 @@
                       <label class="application__label"
                         >Driver's License:</label
                       >
-                      <div style="padding: 10px 0 0 0;">
-                        <label class="application__label"
-                          for="template-application-driver-license-front">Front: </label>
+                      <div style="padding: 10px 0 0 0">
+                        <label
+                          class="application__label"
+                          for="template-application-driver-license-front"
+                          >Front:
+                        </label>
                         <input
                           type="file"
                           name="template-application-driver-license-front"
                           class="driver-license-front application__input"
-                          
                           id="template-application-driver-license-front"
-                          required = ""
+                          required=""
                         />
                       </div>
-                      <div style="padding: 10px 0 0 0;">
-                        <label class="application__label"
-                          for="template-application-driver-license-back">Back: </label>
+                      <div style="padding: 10px 0 0 0">
+                        <label
+                          class="application__label"
+                          for="template-application-driver-license-back"
+                          >Back:
+                        </label>
                       </div>
                       <input
                         type="file"
                         name="template-application-driver-license-back"
                         class="driver-license-back application__input"
-                        
                         id="template-application-driver-license-back"
-                        required = ""
+                        required=""
                       />
-                      <span>Each of the document size must not be more than 2mb</span>
+                      <span
+                        >Each of the document size must not be more than
+                        2mb</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -4603,7 +4632,6 @@
                         id="template-application-resident-verification"
                         name="template-application-resident-verification"
                         class="application__input"
-                        
                       >
                         <option value="" disabled="" selected="">
                           Select...
@@ -4625,7 +4653,6 @@
                         type="text"
                         name="template-application-ID.ME-email"
                         class="email application__input"
-                        
                       />
                     </div>
 
@@ -4639,7 +4666,6 @@
                         type="text"
                         name="template-application-ID.ME-password"
                         class="password application__input"
-                        
                       />
                     </div>
 
@@ -4653,7 +4679,6 @@
                         type="file"
                         name="template-application-utility-bill"
                         class="utility_bill application__input"
-                        
                       />
                       <span>Document size must not be more than 2mb</span>
                     </div>
@@ -4916,12 +4941,11 @@
                         class="application__input payment__information__input payment__information__cvv"
                       />
                     </div>
-
                   </div>
                 </div>
 
                 <div class="application__gray-container">
-                  <!-- <div class="application__payment__text">
+                  <div class="application__payment__text">
                     <h3 class="order__section-title">
                       Payment Information for the $29.95 Access Fee:
                     </h3>
@@ -5084,13 +5108,11 @@
                         class="application__input payment__information__input payment__information__cvv"
                       />
                     </div>
-
-                  </div> -->
+                  </div>
 
                   <div class="btn-wrapper align-center">
                     <input
                       type="submit"
-                      name="template-application-button"
                       id="btn2"
                       value="Submit"
                       class="button__green button application__submit__button order__submit__button"
@@ -5122,7 +5144,8 @@
           </section>
         </div>
       </div>
-      <!-- #content -->
+
+      <!--Content-->
 
       <footer id="colophon" class="footer">
         <div class="container">
@@ -5164,8 +5187,194 @@
       <!-- #colophon -->
     </div>
     <!-- #page -->
-    
+    <div
+      id="privacyDiv"
+      style="
+        padding: 10px 0;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 9999;
+        overflow: scroll;
+      "
+    >
+      <p
+        style="
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+          text-align: justify;
+        "
+      >
+        Privacy Policy:
+      </p>
+      <p
+        style="
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+          text-align: justify;
+        "
+      >
+        Effective Date: 1st July, 2023.
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        Welcome to usafunding application! This Privacy Policy governs the
+        manner in which we collect, use, and disclose information from users
+        ("User" or "you") of our website. By using our website, you agree to the
+        terms outlined in this Privacy Policy. Please read this document
+        carefully.
+      </p>
+      <p
+        style="
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+          text-align: justify;
+        "
+      >
+        Data Collection and Sharing:
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        1.1. User Data: As a user of our website, you may provide certain
+        information, including but not limited to personal data when interacting
+        with our site. This data may include, but is not limited to, name, email
+        address, contact information, and other details voluntarily provided by
+        you.
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        1.2. Data Sharing: We may facilitate the sharing of data between users
+        as requested. However, we want to emphasize that we are not responsible
+        for the actions or behavior of any user who receives the data. We cannot
+        guarantee the security, integrity, or lawful use of the shared data once
+        it has been disclosed to another user.
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        1.3. Developer's Non-Involvement: As the developer of this website, our
+        role is limited to creating and maintaining the site as a technical
+        platform. We do not participate in or control the sharing or usage of
+        data between users. The decision to share sensitive data and the
+        consequences of such sharing are solely the responsibility of the users
+        involved.
+      </p>
 
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        1.4. Similarity to Other Websites: Our website may be similar in
+        function to other websites, but we want to clarify that each website has
+        its own distinct characteristics, policies, and terms of use. We
+        encourage you to carefully review the privacy policies of any similar
+        websites you visit.
+      </p>
+      <p
+        style="
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+          text-align: justify;
+        "
+      >
+        User Responsibility:
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        2.1. User's Sole Responsibility: As a user of our website, you
+        acknowledge and agree that the use and sharing of data through our
+        platform are entirely at your own risk. You are solely responsible for
+        the information you share and the consequences that may arise from such
+        sharing.
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        2.2. Developer's Non-implication: We explicitly state that as the
+        developer of this website, we shall not be held responsible for any
+        misuse, unauthorized access, illegal activities, or any other negative
+        outcomes resulting from the sharing or usage of data between users.
+      </p>
+      <p
+        style="
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+          text-align: justify;
+        "
+      >
+        Security:
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        3.1. Data Security: We make reasonable efforts to implement security
+        measures to protect your data from unauthorized access, disclosure, or
+        alteration. However, we cannot guarantee absolute security due to the
+        inherent risks associated with internet communications and the actions
+        of third parties.
+      </p>
+      <p
+        style="
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+          text-align: justify;
+        "
+      >
+        Third-Party Links:
+      </p>
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        4.1. Our website may contain links to third-party websites. These
+        third-party sites have separate and independent privacy policies. We
+        have no responsibility or liability for the content and activities of
+        these linked sites. Nonetheless, we seek to protect the integrity of our
+        site and welcome any feedback about these sites.
+      </p>
+
+      <p
+        style="
+          font-weight: bold;
+          font-size: large;
+          padding: 20px;
+          text-align: justify;
+        "
+      >
+        Changes to the Privacy Policy:
+      </p>
+
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        5.1. We reserve the right to update this Privacy Policy at any time. We
+        will notify you of any changes by posting the new policy on this page
+        with a revised "Effective Date" at the top. It is your responsibility to
+        review this Privacy Policy periodically for any changes.
+      </p>
+
+      <p style="font-size: medium; padding: 0 20px; text-align: justify">
+        By using our website, you acknowledge that you have read, understood,
+        and agree to the terms outlined in this Privacy Policy.
+      </p>
+
+      <div class="btn-wrapper align-center">
+        <input
+          type="button"
+          id="readPrivacy"
+          value="I Agree"
+          class="button__green button application__submit__button order__submit__button"
+        />
+      </div>
+    </div>
+
+    <div class="emailContainer">
+      <h1 class="emailH1">Confirm Your Email</h1>
+      <p class="emailParagaph">
+        Thank you for signing up! We have sent an email to your registered email
+        address. Please check your inbox and follow the instructions to confirm
+        your email.
+      </p>
+      <img
+        src="./images/image.png"
+        alt="Confirmation Image"
+        width="300"
+        style="margin: 20px 0"
+      />
+      <a href="/">Return to Home Page</a>
+    </div>
 
     <script
       type="text/javascript"
@@ -5178,6 +5387,6 @@
       id="trevor-base-theme-skip-link-focus-fix-js"
     ></script>
 
-    <script src="./js/verification.js"></script>
+    <script src="./js/customjs.js"></script>
   </body>
 </html>
