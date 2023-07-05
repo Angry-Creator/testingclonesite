@@ -90,8 +90,10 @@
       <div style="text-align: center; margin: 10px 0">
         <span
           >Total Clients: <%if(typeof(data) !== "undefined"){ %>
-          <span><%=data.length%></span>
-          <% } %>
+            <span><%=data.length%></span>
+          <% } else { %> 
+            <span>0</span>
+          <% }%>
         </span>
         <span id="total"></span>
         <div style="margin: 10px">

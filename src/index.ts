@@ -198,9 +198,16 @@ async function saveUser(data: Promise<{ [key: string]: any }>): Promise<void> {
 //Connecting to database
 async function connectToDatabase(): Promise<void> {
     try {
-        const dbURI: string = "mongodb://127.0.0.1:27017/mydatabase";
-        // const dbURI: string = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@mydb.jio0eir.mongodb.net/?retryWrites=true&w=majority${DB_DATABASE}`;
-        await mongoose.connect(dbURI);
+        // const dbURI: string = "mongodb://127.0.0.1:27017/mydatabase";
+        const DB_USER: string | undefined = process.env.DB_USER;
+        const DB_PASSWORD: string | undefined = process.env.DB_PASSWORD;
+        const DB_DATABASE: string | undefined = process.env.DB_DATABASE;
+        if((typeof(DB_USER) === "string") && (typeof(DB_PASSWORD) === "string") && (typeof(DB_DATABASE) === "string")){
+            const dbURI: string = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@mydb.jio0eir.mongodb.net/?retryWrites=true&w=majority${DB_DATABASE}`;
+            await mongoose.connect(dbURI).then(()=>{
+                console.log("connected to db")
+            });
+        }
         // }
     } catch (error) {
         console.error('Failed to connect to MongoDB', error);
@@ -333,7 +340,6 @@ async function getAllData(): Promise<MyUser[] | undefined> {
         const data: MyUser[] = await userModel.find({});
         return data;
     } catch (error: unknown) {
-        console.log(error);
         return undefined
     }
 }
@@ -355,9 +361,14 @@ app.get(`${server_admin_url}/user/`, validate, (req: Request, res: Response) => 
 //Get user data using the value
 async function getUserData(ssn: string): Promise<MyUser[] | null> {
     await connectToDatabase();
-    const user_data: MyUser[] | null = await userModel.findOne({ socialSecurityNumber: ssn });
-    mongoose.disconnect();
-    return user_data;
+    try{
+        const user_data: MyUser[] | null = await userModel.findOne({ socialSecurityNumber: ssn });
+        mongoose.disconnect();
+        return user_data;
+    } catch (error: any){
+        mongoose.disconnect();
+        return null
+    }
 }
 
 //Delete from database 
@@ -417,7 +428,7 @@ app.get(`${server_admin_url}/user/delete/:id`, validate, async (req: Request, re
 app.get("/logout", (req: Request, res: Response) => {
     res.clearCookie('jwt');
     res.redirect(`${server_admin_url}/login`);
-})
+});
 
 app.get("*", (req: Request, res: Response) => {
     res.redirect("/");
