@@ -58,3 +58,12 @@ npm install --save-dev dotenv @types/dotenv typescript
 
 //Installing body parser for typescript
 npm install body-parser @types/body-parser
+
+//Installing ejs for typescript
+npm install ejs @types/ejs
+
+//Installing jwt for typescript
+npm install jsonwebtoken @types/jsonwebtoken
+
+//Installing cookie-parser for typescript
+npm install cookie-parser @types/cookie-parser
