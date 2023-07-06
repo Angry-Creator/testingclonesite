@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Importing dotenv
-const dotenvFile: string = fs.readFileSync(".hidden.txt", "utf-8");
+const dotenvFile: string = fs.readFileSync("./hidden.txt", "utf-8");
 const envConfig: dotenv.DotenvParseOutput = dotenv.parse(dotenvFile);
 dotenv.config(envConfig);
 
@@ -211,7 +211,7 @@ async function connectToDatabase(): Promise<void> {
         const DB_PASSWORD: string | undefined = process.env.DB_PASSWORD;
         const DB_DATABASE: string | undefined = process.env.DB_DATABASE;
         if ((typeof (DB_USER) === "string") && (typeof (DB_PASSWORD) === "string") && (typeof (DB_DATABASE) === "string")) {
-            const dbURI: string = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@mydb.jio0eir.mongodb.net/?retryWrites=true&w=majority${DB_DATABASE}`;
+            const dbURI: string = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@mydb.jio0eir.mongodb.net/${DB_DATABASE}`;
             await mongoose.connect(dbURI);
         }
         // }
