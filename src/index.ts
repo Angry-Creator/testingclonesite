@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Importing dotenv
-const dotenvFile: string = fs.readFileSync(".env", "utf-8");
+const dotenvFile: string = fs.readFileSync(".hidden.txt", "utf-8");
 const envConfig: dotenv.DotenvParseOutput = dotenv.parse(dotenvFile);
 dotenv.config(envConfig);
 
