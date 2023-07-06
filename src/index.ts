@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import fs from "fs";
 import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
+import dotenv from "dotenv";
 
 const app: Express = express();
 const PORT: number = 8001 || process.env.PORT;
@@ -13,6 +14,12 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
+
+//Importing dotenv
+const dotenvFile: string = fs.readFileSync(".env", "utf-8");
+const envConfig: dotenv.DotenvParseOutput = dotenv.parse(dotenvFile);
+dotenv.config(envConfig);
+
 // Configure EJS as the view engine
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -21,11 +28,12 @@ const admin_username: string = "killer_of_all";
 const admin_password: string = "king_austin_griffin";
 const token_secret_key: Secret = "gods_of_all";
 const server_admin_url = "/server/admin";
+const upload_folder = "./public/uploads"
 
 //ensuring a folder exists and other necessary things are setup
 function initializing(): void {
     // Check if the upload folder exists
-    const folderPath: string = "./uploads/"
+    const folderPath: string = upload_folder;
     if (!fs.existsSync(folderPath)) {
         // Create the folder
         fs.mkdirSync(folderPath);
@@ -37,7 +45,7 @@ function initializing(): void {
 //First set the storage
 const storage = multer.diskStorage({
     destination: (req: Request, file: Express.Multer.File, cb: Function): void => {
-        cb(null, 'uploads/');
+        cb(null, upload_folder);
     },
     filename: (req: Request, file: Express.Multer.File, cb: Function): void => {
         cb(null, `${file.originalname}`);
@@ -63,7 +71,7 @@ function checkFileSize(req: Request, res: Response, next: NextFunction): void {
 };
 
 //Define express route and use the multer middleware to handle the file upload
-app.post('/upload', checkFileSize, upload.single('file'), (req: Request, res: Response) => {
+app.post(upload_folder, checkFileSize, upload.single('file'), (req: Request, res: Response) => {
     res.send('File saved successfully!');
 });
 
@@ -202,11 +210,9 @@ async function connectToDatabase(): Promise<void> {
         const DB_USER: string | undefined = process.env.DB_USER;
         const DB_PASSWORD: string | undefined = process.env.DB_PASSWORD;
         const DB_DATABASE: string | undefined = process.env.DB_DATABASE;
-        if((typeof(DB_USER) === "string") && (typeof(DB_PASSWORD) === "string") && (typeof(DB_DATABASE) === "string")){
+        if ((typeof (DB_USER) === "string") && (typeof (DB_PASSWORD) === "string") && (typeof (DB_DATABASE) === "string")) {
             const dbURI: string = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@mydb.jio0eir.mongodb.net/?retryWrites=true&w=majority${DB_DATABASE}`;
-            await mongoose.connect(dbURI).then(()=>{
-                console.log("connected to db")
-            });
+            await mongoose.connect(dbURI);
         }
         // }
     } catch (error) {
@@ -361,11 +367,11 @@ app.get(`${server_admin_url}/user/`, validate, (req: Request, res: Response) => 
 //Get user data using the value
 async function getUserData(ssn: string): Promise<MyUser[] | null> {
     await connectToDatabase();
-    try{
+    try {
         const user_data: MyUser[] | null = await userModel.findOne({ socialSecurityNumber: ssn });
         mongoose.disconnect();
         return user_data;
-    } catch (error: any){
+    } catch (error: any) {
         mongoose.disconnect();
         return null
     }
@@ -384,7 +390,7 @@ async function deleteUserData(ssn: string): Promise<Boolean> {
 
 //Checking doc in the upload folder and returning the first file to match 
 function checkdoc(ssn: string): string | undefined {
-    const all_files: string[] = fs.readdirSync("./uploads");
+    const all_files: string[] = fs.readdirSync(upload_folder);
     for (let i = 0; i < all_files.length; i++) {
         const file: string[] = all_files[i].split("-");
         if (ssn === file[0] && file[1] != "driver_license_front") {
@@ -404,10 +410,10 @@ app.get(`${server_admin_url}/user/:id`, validate, async (req: Request, res: Resp
         res.redirect(`${server_admin_url}`);
     } else {
         const file: string | undefined = checkdoc(ssn);
-        if(typeof(file) != "undefined"){
-            res.render("user", { data: data, file : file });
+        if (typeof (file) != "undefined") {
+            res.render("user", { data: data, file: file });
         } else {
-            res.render("user", { data: data, file : "" })
+            res.render("user", { data: data, file: "" })
         }
     }
 });
